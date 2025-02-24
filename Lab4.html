@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeJon Young INST377 Lab 4</title>
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .section {
+            border: 2px solid black;
+            padding: 20px;
+            margin: 10px;
+            width: 40%;
+            text-align: center;
+        }
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="pageTitle">DeJon Young INST377 Lab 4</h1>
+    <div class="container">
+        <div class="section">
+            <form name="nameForm">
+                <label for="firstName">Name:</label>
+                <input type="text" id="firstName" required>
+                <button type="button" onclick="alertMe()">Alert Me!</button>
+            </form>
+        </div>
+
+        <div class="section">
+            <button id="change" onclick="changeColor()">Change Color</button>
+        </div>
+        
+        <div class="section">
+            <form name="testerForm">
+                <label for="texterName">Text Tester:</label>
+                <input type="text" id="texterName" required>
+                <button type="button" onclick="validateText()">Validate Text</button>
+            </form>
+        </div>
+
+            <div class="section">
+                <button onclick="addText()">Add Text</button>
+            </div>
+        </div>
+   
+    <script>
+
+    function alertMe() {
+         let name = document.getElementById('firstName').value;
+        if (name) {
+        alert("Hi " + name + "!");
+    } else {
+        alert("Please enter your name!");
+    }
+}
+   
+    function changeColor() {
+        console.log('Attempting to change color of text, current color is: ', document.body.style.backgroundColor)
+        if (document.body.style.backgroundColor == 'red') {
+            document.body.style.backgroundColor = 'pink';
+        } else {
+            document.body.style.backgroundColor = 'red';
+            }
+            console.log('Successfully changed color of text, new color is: ', document.body.style.backgroundColor)
+        }
+
+        function validateText() {
+            const validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+         let text = document.getElementById('texterName').value;
+
+          if (validation.test(text)) {
+           alert("Special characters are not allowed!");
+           return false;
+    } else {
+        return true;
+    }
+}
+
+        function addText() {
+            let title = document.getElementById('pageTitle');
+            title.textContent += " Add Text";
+        }
+    </script>
+</body>
+</html>
